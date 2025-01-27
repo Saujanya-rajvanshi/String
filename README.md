@@ -1,6 +1,3 @@
-Your code is almost correct but has a logical issue in the `printString` function. The loop in `printString` does not terminate, leading to an infinite loop because there is no condition to stop when the string ends. In C, strings are terminated with a null character (`'\0'`), and the loop should check for this to stop iterating.
-
-Here’s the corrected version of your code:
 
 ### Corrected Code:
 ```c
@@ -24,16 +21,7 @@ void printString(char arr[]) {
 }
 ```
 
-### Key Fixes:
-1. **Proper Loop Termination in `printString`:**
-   - The `for` loop now checks for the null character (`'\0'`) to stop.
-   
-2. **Added a Function Call in `main`:**
-   - `printString(firstname)` is called to print the string.
-
-3. **Optional Formatting:**
-   - Added a newline (`\n`) after printing the string for better output formatting.
-
+#
 ### Output:
 ```
 saujanya
