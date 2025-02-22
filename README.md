@@ -131,3 +131,75 @@ Hello, World!
 ```
 
 Now, there’s no extra newline between outputs. Let me know if you need further changes!
+
+
+
+Here’s how the corrected program runs with an example input and output:  
+
+### **Fixed Code:**  
+```c
+#include <stdio.h>
+
+void printString(char arr[]); 
+int countLength(char arr[]);
+
+int main() {
+    char name[100];
+    
+    printf("Enter a string: ");
+    fgets(name, 100, stdin);
+
+    printf("Length is: %d\n", countLength(name));
+    printf("You entered: ");
+    printString(name);
+
+    return 0;
+}
+
+int countLength(char arr[]) {
+    int count = 0;
+    while (arr[count] != '\0') {
+        count++;
+    }
+
+    // Remove trailing newline character (if present)
+    if (count > 0 && arr[count - 1] == '\n') {
+        return count - 1;
+    }
+
+    return count;
+}
+
+void printString(char arr[]) {
+    for (int i = 0; arr[i] != '\0'; i++) {
+        printf("%c", arr[i]);
+    }
+}
+```
+
+---
+
+### **Example Execution:**  
+#### **Input:**  
+```
+Enter a string: Hello World
+```
+
+#### **Output:**  
+```
+Length is: 11
+You entered: Hello World
+```
+
+---
+
+### **Explanation:**
+1. **User enters** `"Hello World"` (11 characters + `\n` from `fgets`).
+2. **`countLength` function:**  
+   - Counts the characters in the array.
+   - Detects the newline character (`\n`) and excludes it.
+   - Returns `11` instead of `12` (correct length).
+3. **`printString` function:**  
+   - Prints the string properly without adding an extra newline.  
+
+Let me know if you need modifications!
