@@ -70,3 +70,64 @@ Alice
 4. A newline (`\n`) is added at the end for better formatting.
 
 Would you like me to run this code for verification?
+
+Here’s an example of how the corrected program would behave when executed:
+
+### **Input (User enters in stdin)**
+```
+Hello, World!
+```
+
+### **Output**
+```
+Hello, World!
+
+Hello, World!
+```
+
+### **Explanation**
+1. `fgets(str, 100, stdin);` reads `"Hello, World!\n"` (including the newline `\n`).
+2. `puts(str);` prints it, adding an extra newline.
+3. `printString(str);` prints the string character by character, keeping the newline.
+
+If you don't want the extra newline from `puts`, you can modify `fgets` to remove it:
+
+#### **Updated Code (Remove Newline from `fgets`)**
+```c
+#include <stdio.h>
+
+void printString(char arr[]) {
+    for (int i = 0; arr[i] != '\0'; i++) {
+        printf("%c", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    char str[100];
+    fgets(str, 100, stdin);
+
+    // Remove newline if present
+    int i = 0;
+    while (str[i] != '\0') {
+        if (str[i] == '\n') {
+            str[i] = '\0';  // Replace newline with null character
+            break;
+        }
+        i++;
+    }
+
+    puts(str);
+    printString(str);
+
+    return 0;
+}
+```
+
+### **Output for Same Input**
+```
+Hello, World!
+Hello, World!
+```
+
+Now, there’s no extra newline between outputs. Let me know if you need further changes!
